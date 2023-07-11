@@ -1,0 +1,167 @@
+Comandos que vamos a usar todo el tiempo:
+
+    /////////////////////////
+    git add .
+    git commit -m "<message>"
+    git push origin main
+    /////////////////////////
+        
+/////////////////////////////
+//// Introduccion simple ////
+/////////////////////////////
+
+De forma simple Git es una aplicacion de guardado rapido, asi como en un videojuego,
+elegimos guardar nuestro progreso antes de encontrarnos con un jefe o antes de cerrar el juego,
+en el caso de la programación esto es bastante util, ya que al igual que un videojuego,
+si queremos volver a un punto de guardado podemos volver a el rapidamente.
+
+Como funciona esto?
+///////////////////
+
+Cuando iniciamos un proyecto(repositorio) en git, lo que hacemos es crear un punto de guardado inicial con toda la informacion del proyecto, luego de eso cada vez que guardamos, estamos generando un "log" que indica que lineas de nuestro codigo estamos modificando, lo que permite a git volver a un punto de guardado anterior simplemente deshaciendo cambios.
+
+//////////////////////////
+//// Comandos basicos ////
+//////////////////////////
+
+    ////////
+    git init
+    ////////
+        Inicializa un repositorio(repo) de git.
+        No podremos hacer commit(guardado) amenos que inicialicemos el repositorio.
+
+    ///////////////////
+    git add "<archivo>"
+    ///////////////////
+        Aca elegimos que archivos vamos a agregar al proximo guardado, este proceso se llama "staging".
+        Tambien podemos utilizar "." para decirle que vamos a agregar todos los archivos modificados al "staging".
+        
+    //////////
+    git status
+    //////////
+        Nos muestra el estatus del "staging", esto nos permite ver que archivos se van a guardar cuando hagamos el commit.
+    
+    //////////////////////////
+    git commit -m "<message>"
+    //////////////////////////
+        Cuando hacemos el commit, estamos guardando los cambios localmente.
+        Trabajando solo talvez no te sea tan importante, pero cuando trabajamos en grupo,
+        es imprescindible contar con buenos mensajes en el commit(que sean coherentes e informativos).
+
+///////////////////////
+//// Usando Github ////
+///////////////////////
+
+    Github es una plataforma que nos permite compartir proyectos y trabajar en equipo utilzando git.
+    Si usamos github necesitamos tambien guardar nuestros cambios online, usando un repositorio remoto.
+    El alias(url) de un repo remoto es su origen.
+    Si ya copiaste un proyecto desde github, este ya tiene origen.
+    
+    /////////////
+    git remote -v
+    /////////////
+        Nos muestra el origen de el repositorio en el que estamos trabajando.
+        
+    Si ya inicializaste tu propio repo y quieres utilizarlo en github debes asociarlo a un repo de github.
+    
+    ////////////////////////////
+    git remote add origin <url>
+    ////////////////////////////
+        Debes crear un repositorio nuevo en github y copiar su origen(url).
+        Luego de tener asociado el repositorio ya podremos hacer add, commit y push a tu repositorio remoto.
+    
+    ///////////////////////////////
+    git remote -v
+    git remote set-url origin <url>
+    ///////////////////////////////
+        Estos comandos los utilizamos en caso de necesitar cambiar el origen de un repositorio.
+        Digamos que copiaste un repo de alguien mas y quieres cambiar el origen a un repositorio que te pertenezca.
+
+    //////////////////
+    git clone <url>
+    //////////////////
+        Esta es la forma mas comun de copiar un repo, ten en cuenta que el origen del repositorio sigue siendo el de su dueño original, por lo que si no cuentas con los permisos no podras hacer "push" a los cambios que quieras aplicar.
+
+    ////////////////////
+    git push origin main
+    ////////////////////
+        Con este comando guardamos los cambios en el repositorio remoto, seria como el commit pero para el repo de github.
+        
+    ////////////////////
+    git pull origin main
+    ////////////////////
+        Con este comando traemos los cambios del repositorio remoto hacia nosotros.
+    
+    
+    
+//////////////////
+//// Avanzado ////
+//// Branches ////
+//////////////////
+
+Branches(ramas) son un poco mas complicadas pero no imposibles de entender, en terminos de juegos, podemos verlo como cargar una partida anterior y tomar una ruta diferente, lo que nos permite hacer diferentes versiones de un proyecto sin modificar el proyecto original, luego cuando lo decidamos podemos mezclar(merge) ambas ramas de codigo.
+
+    //////////
+    git branch
+    //////////
+        Nos da una lista de todas las branches que tenemos disponibles
+        
+    /////////////////
+    git branch <name>
+    /////////////////
+        Nos permite crear una nueva branch
+    
+    ///////////////////
+    git checkout <name>
+    ///////////////////
+        Nos permite cambiar de ramas
+        Tambien podemos utilizar "git checkout -b <name>" para crear una rama nueva y cambiar a esa rama en un solo comando.
+        
+    //////////////////
+    git merge <branch>
+    //////////////////
+        Esto nos permite mezclar branches, el branch que elegimos en el merge se mezclaria con el branch en el que nos encontramos, por lo que el proceso seria hacer un checkout y luego un merge.
+    
+    ////////////////////////
+    git pull origin <branch>
+    ////////////////////////
+        Para sincronizar los cambios de esa rama desde github
+        
+    
+////////////////////////
+//// Otros comandos ////
+////////////////////////
+
+    ///////////////
+    git diff --stat
+    ///////////////
+        Con este comando podemos ver la cantidad de lineas que se han modificado en cada archivo.
+
+    ///////
+    git log
+    ///////
+        Nos muestra un log con todos los "commits" efectuados, cada commit viene con un codigo hash
+        este codigo lo utilizamos para revertir cambios, o mas bien ir a un punto de guardado anterior.
+        
+    ///////////////////////////////
+    git checkout <codigo de commit>
+    ///////////////////////////////
+        Si queremos volver a un punto anterior,
+        podemos hacerlo usando el codigo hash de un commit como un nombre de branch.
+        Esto nos estaria moviendo a una rama paralela a la version actual del proyecto.
+        Para aplicar este rollback al proyecto debemos forzazr un push, esto es peligroso, ya que estaras sobreescribiendo todo el progreso que venga despues de este commit.
+        
+    ///////////////////////
+    git push -f origin main
+    ///////////////////////
+        Para forzar un push
+        
+    /////////////////////////////////////////////////
+    git commit --amend -m "an updated commit message"
+    /////////////////////////////////////////////////
+        Este comando nos permite cambiarle el comentario a el ultimo commit, para corregir errores.
+        
+        
+        
+    Muchas gracias por leer mi pequeño tutorial!
+    Suerte!
