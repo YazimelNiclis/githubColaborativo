@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+      #lista {
+        list-style: none;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="contenedor">
+      <!-- <button id="boton">Click me</button>
+      <ul id="lista">
+        <li>Opcion 1</li>
+        <li>Opcion 2</li>
+        <li>Opcion 3</li>
+        <li>Opcion 4</li>
+      </ul> -->
+    </div>
+    <script>
+      // Crear 3 parrafos con javascript
+
+      // Crear un enlace con javascript
+
+      // Crear una lista desordenada de elementos con javascript
+
+      function init() {
+        let contenedor = document.getElementById("contenedor");
+      }
+
+      window.onload = init;
+    </script>
+  </body>
+</html>
+
+<!-- //lista desordenada
+
+const lista = document.getElementById("lista");
+const boton = document.getElementById("boton");
+boton.addEventListener("click", () => {
+  /* for (let i = 1; i < 10; i++) {
+    let li = document.createElement("li");
+    let liTexto = document.createTextNode("elemento " + i);
+    li.appendChild(liTexto);
+    lista.appendChild(li);
+  } */
+  boton.style.display = "none";
+  lista.style.display = "block";
+  lista.addEventListener("click", () => {
+    boton.style.display = "block";
+    lista.style.display = "none";
+  });
+});
+} -->
